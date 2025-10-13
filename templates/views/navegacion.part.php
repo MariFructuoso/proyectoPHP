@@ -1,5 +1,5 @@
 <?php
-  require_once __DIR__ . '/../../src/utils/utils.class.php';
+require_once __DIR__ . '/../../src/utils/utils.class.php';
 
 ?>
 <!-- Navigation Bar -->
@@ -24,16 +24,19 @@
         else echo '<li class="lien">';
         ?>
         <a href="index.php"><i class="fa fa-home sr-icons"></i> Home</a></li>
-
+        <?php
+        if (Utils::esOpcionMenuActiva('/galeria.php') == true)
+          echo '<li class="active lien">';
+        else echo '<li class="lien">';
+        ?>
+        <a href="galeria.php"><i class="fa fa-bookmark sr-icons"></i> Galeria</a>
+        </li>
         <?php
         if (Utils::esOpcionMenuActiva('/about.php') == true)
           echo '<li class="active lien">';
         else echo '<li class="lien">';
         ?>
-
-
-        <li class=" lien">
-          <a href="about.php"><i class="fa fa-bookmark sr-icons"></i> About</a>
+        <a href="about.php"><i class="fa fa-bookmark sr-icons"></i> About</a>
         </li>
 
         <?php
@@ -41,8 +44,7 @@
           echo '<li class="active lien">';
         else echo '<li class="lien">';
         ?>
-        <li class=" lien">
-          <a href="blog.php"><i class="fa fa-file-text sr-icons"></i> Blog</a>
+        <a href="blog.php"><i class="fa fa-file-text sr-icons"></i> Blog</a>
         </li>
         <?php
         if (Utils::esOpcionMenuActiva('/contact.php') == true)
