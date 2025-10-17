@@ -47,6 +47,13 @@ require_once __DIR__ . '/../../src/utils/utils.class.php';
         <a href="blog.php"><i class="fa fa-file-text sr-icons"></i> Blog</a>
         </li>
         <?php
+        if (Utils::esOpcionMenuActiva('/asociados.php') == true)
+          echo '<li class="active lien">';
+        else echo '<li class="lien">';
+        ?>
+        <a href="asociados.php"><i class="fa fa-file-text sr-icons"></i> Asociados</a>
+        </li>
+        <?php
         if (Utils::esOpcionMenuActiva('/contact.php') == true)
           echo '<li class="active lien">';
         else echo '<li class="lien">';
