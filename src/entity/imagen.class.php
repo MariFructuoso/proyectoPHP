@@ -1,5 +1,5 @@
 <?php
-class imagen
+class Imagen
 {
     const RUTA_IMAGENES_PORTFOLIO = '/public/images/index/portfolio/';
     const RUTA_IMAGENES_GALERIA = '/public/images/index/gallery/';
@@ -24,7 +24,7 @@ class imagen
     /**
      * @var int
      */
-    private $numVisulizaciones;
+    private $numVisualizaciones;
     /**
      * @var int
      */
@@ -43,13 +43,13 @@ class imagen
      * @param int $numDownloads
      */
 
-    public function __construct(string $nombre = "", string $descripcion = "", int $categoria = 0, int $numVisulizaciones = 0, int $numLikes = 0, int $numDownloads = 0)
+    public function __construct(string $nombre = "", string $descripcion = "", int $categoria = 0, int $numVisualizaciones = 0, int $numLikes = 0, int $numDownloads = 0)
     {
         $this->id = null;
         $this->nombre = $nombre;
         $this->descripcion = $descripcion;
         $this->categoria = $categoria;
-        $this->numVisulizaciones = $numVisulizaciones;
+        $this->numVisualizaciones = $numVisualizaciones;
         $this->numLikes = $numLikes;
         $this->numDownloads = $numDownloads;
     }
@@ -86,7 +86,7 @@ class imagen
      */
     public function getNumVisualizaciones(): ?int
     {
-        return $this->numVisulizaciones;
+        return $this->numVisualizaciones;
     }
     /**
      * @return int
@@ -139,7 +139,7 @@ class imagen
      */
     public function setNumVisualizaciones(int $numVisualizaciones): Imagen
     {
-        $this->numVisulizaciones = $numVisualizaciones;
+        $this->numVisualizaciones = $numVisualizaciones;
         return $this;
     }
     /**
