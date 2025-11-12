@@ -9,12 +9,12 @@
             <h4>Our Main Partners</h4>
             <hr>
             <div class="text-muted text-left">
-                <?php foreach ($logos as $logo) { ?>
+                <?php foreach ($logos as $logo) : ?>
                     <ul class="list-inline">
-                        <li><img src="<?= $logo->getUrlLogo() ?>" alt="logo"></li>
-                        <li>First Partner Name</li>
+                        <li><img src="<?= 'uploads/logos/' . $logo->getNombre() ?>" alt="logo"></li>
+                        <li><?= $logo->getNombreEmpresa() ?></li>
                     </ul>
-                <?php } ?>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>

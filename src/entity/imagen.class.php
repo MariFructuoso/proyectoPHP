@@ -2,10 +2,10 @@
 require_once __DIR__ . '/IEntity.php';
 class Imagen implements IEntity
 {
-    const RUTA_IMAGENES_PORTFOLIO = '/public/images/index/portfolio/';
-    const RUTA_IMAGENES_GALERIA = '/public/images/index/gallery/';
-    const RUTA_IMAGENES_CLIENTES = '/public/images/clients/';
-    const RUTA_IMAGENES_SUBIDAS = '/public/images/subidas/';
+    const RUTA_IMAGENES_PORTFOLIO = 'public/images/index/portfolio/';
+    const RUTA_IMAGENES_GALERIA = 'public/images/index/gallery/';
+    const RUTA_IMAGENES_CLIENTES = 'public/images/clients/';
+    const RUTA_IMAGENES_SUBIDAS = 'public/images/subidas/';
 
     private ?int $id;
     private string $nombre;

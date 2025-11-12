@@ -3,7 +3,7 @@ require_once __DIR__ . '/IEntity.php';
 
 class Asociado implements IEntity
 {
-  const RUTA_LOGOS_ASOCIADOS = '/public/images/asociados/';
+  const RUTA_LOGOS_ASOCIADOS = 'public/images/asociados/';
 
   /**
    * @var int 
@@ -95,7 +95,12 @@ class Asociado implements IEntity
 
   public function getUrlLogo(): string
   {
-    return self::RUTA_LOGOS_ASOCIADOS . $this->getLogo();
+    // Asegurarnos de que no hay barras duplicadas
+    $logo = $this->getLogo();
+    if (empty($logo)) {
+      return '';
+    }
+    return trim(self::RUTA_LOGOS_ASOCIADOS . $logo, '/');
   }
 
   public function __toString(): string

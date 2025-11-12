@@ -1,7 +1,5 @@
 <?php
 require_once __DIR__ . '/inicio.part.php';
-?>
-<?php
 require_once __DIR__ . '/navegacion.part.php';
 ?>
 
@@ -13,7 +11,7 @@ require_once __DIR__ . '/navegacion.part.php';
     <div class="col-xs-12 intro">
       <div class="carousel-inner">
         <div class="item active">
-          <img class="img-responsive" src="images/index/woman.jpg" alt="header picture">
+          <img class="img-responsive" src="<?php echo 'public/images/index/woman.jpg'; ?>" alt="header picture">
         </div>
         <div class="carousel-caption">
           <h1>FIND NICE PICTURES HERE</h1>
@@ -45,30 +43,25 @@ require_once __DIR__ . '/navegacion.part.php';
       <?php
       $idCategoria = 1;
       shuffle($imagenesHome);
-      require_once 'imagenindex.part.php';
+      require_once __DIR__ . '/imagenindex.part.php';
       ?>
 
-      <!-- End of First category pictures -->
-
-      <!--second category pictures -->
+      <!-- Second Category pictures -->
       <?php
       $idCategoria = 2;
       shuffle($imagenesHome);
-      require_once 'imagenindex.part.php';
+      require_once __DIR__ . '/imagenindex.part.php';
       ?>
-      <!-- End of second category pictures -->
 
-      <!-- Third Category Pictures -->
+      <!-- Third Category pictures -->
       <?php
       $idCategoria = 3;
       shuffle($imagenesHome);
-      require_once 'imagenindex.part.php';
+      require_once __DIR__ . '/imagenindex.part.php';
       ?>
-      <!-- Third Category Pictures -->
 
     </div>
-    <!-- End of Navigation Table Content -->
-  </div><!-- End of Index-body box -->
+  </div>
 
   <!-- Newsletter form -->
   <div class="index-form text-center">
@@ -83,17 +76,14 @@ require_once __DIR__ . '/navegacion.part.php';
       </div>
     </form>
   </div>
-  <!-- End of Newsletter form -->
 
   <!-- Box within partners name and logo -->
-<?php
-  require_once 'index_asociados.part.php';
-?>
-  <!-- End of Box within partners name and logo -->
+  <?php
+    require_once __DIR__ . '/index_asociados.part.php';
+  ?>
 
 </div><!-- End of index box -->
 
 <?php
 require_once __DIR__ . '/fin.part.php';
 ?>
-

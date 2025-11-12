@@ -1,5 +1,7 @@
 <?php
-require_once '../src/exceptions/FileException.class.php';
+/* require_once '/../src/exceptions/FileException.class.php';*/
+require_once __DIR__ . '/../exceptions/FileException.class.php';
+
 class File
 {
     private $file; // Contenido del fichero que se sube al servidor
@@ -50,16 +52,35 @@ class File
         // Hay un tipo de ataques que intenta acceder a archivos del SO
         if (is_uploaded_file($this->file['tmp_name']) === false)
             throw new FileException('El archivo no ha sido subido mediante un formulario.');
+        
         $this->fileName = $this->file['name'];
-        $ruta = $rutaDestino . $this->fileName;
+        
+        // Ruta absoluta al directorio del proyecto
+        $projectRoot = realpath(__DIR__ . '/../../');
+        
+        // Eliminar cualquier barra inicial de rutaDestino
+        $rutaDestino = ltrim($rutaDestino, '/');
+        
+        // Construir la ruta completa al archivo
+        $rutaCompleta = $projectRoot . '/' . $rutaDestino . $this->fileName;
+        
+        // Asegurarse de que el directorio de destino existe
+        $directorioDestino = dirname($rutaCompleta);
+        if (!is_dir($directorioDestino)) {
+            if (!mkdir($directorioDestino, 0777, true)) {
+                throw new FileException('No se puede crear el directorio de destino');
+            }
+        }
+        
         // Comprobamos si ya existe el fichero
-        if (is_file($ruta) === true) {
+        if (is_file($rutaCompleta) === true) {
             // Generamos un nombre aleatorio
             $idUnico = time();
             $this->fileName = $idUnico . "_" . $this->fileName;
-            $ruta = $rutaDestino . $this->fileName;
+            $rutaCompleta = $projectRoot . '/' . $rutaDestino . $this->fileName;
         }
-        if (move_uploaded_file($this->file['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . '/' . $ruta) === false)
-            throw new FileException('No se puede mover el archivo a su destino');
+        
+        if (move_uploaded_file($this->file['tmp_name'], $rutaCompleta) === false)
+            throw new FileException('No se puede mover el archivo a su destino: ' . $rutaCompleta);
     }
 }

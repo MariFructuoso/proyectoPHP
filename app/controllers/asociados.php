@@ -1,0 +1,38 @@
+<?php
+require_once __DIR__ . '/../../src/utils/file.class.php';
+require_once __DIR__ . '/../../src/exceptions/FileException.class.php';
+require_once __DIR__ . '/../../src/entity/asociados.class.php';
+require_once __DIR__ . '/../../src/exceptions/QueryException.class.php';
+require_once __DIR__ . '/../../src/repository/asociadosRepository.php';
+
+$errores = [];
+$asociados = [];
+$mensaje = '';
+$nombre = '';
+$descripcion = '';
+
+try {
+    // Cargar config y ponerla en el contenedor
+    /* $config = require_once __DIR__ . '/../app/config.php';
+    App::bind('config', $config); */
+
+    // Obtener la conexión desde el contenedor
+    $conexion = App::getConnection();
+
+    // Crear el repositorio
+    $asociadosRepository = new AsociadosRepository();
+
+    // Leer todos los asociados
+    $asociados = $asociadosRepository->findAll();
+
+} catch (FileException $fileException) {
+    $errores[] = $fileException->getMessage();
+} catch (QueryException $queryException) {
+    $errores[] = $queryException->getMessage();
+} catch (AppException $appException) {
+    $errores[] = $appException->getMessage();
+} catch (Exception $exception) {
+    $errores[] = $exception->getMessage();
+}
+
+require_once __DIR__ . '/../views/asociados.view.php';
