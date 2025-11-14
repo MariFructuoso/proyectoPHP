@@ -1,11 +1,12 @@
 <?php
 
-namespace dwes\app\database;
+namespace dwes\core\database;
 
 use dwes\app\exceptions\QueryException;
+use dwes\app\entity\IEntity;
+use dwes\core\App;
 use PDO;
-
-';
+use PDOException;
 
 abstract class QueryBuilder
 {
