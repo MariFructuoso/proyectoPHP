@@ -1,10 +1,12 @@
 <?php
 
-require_once __DIR__ . '/../../src/utils/file.class.php';
-require_once __DIR__ . '/../../src/exceptions/FileException.class.php';
-require_once __DIR__ . '/../../src/entity/asociados.class.php';
-require_once __DIR__ . '/../../src/exceptions/QueryException.class.php';
-require_once __DIR__ . '/../../src/repository/asociadosRepository.php';
+use dwes\app\utils\File;
+use dwes\app\exceptions\FileException;
+use dwes\app\exceptions\AppException;
+use dwes\app\entity\Asociado;
+use dwes\app\exceptions\QueryException;
+use dwes\app\repository\AsociadosRepository;
+use dwes\core\App;
 
 try {
     $asociadosRepository = new AsociadosRepository();

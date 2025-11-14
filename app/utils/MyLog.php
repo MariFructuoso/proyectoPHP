@@ -1,6 +1,10 @@
 <?php
 
-use Monolog;
+namespace dwes\app\utils;
+
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+use Monolog\Level;
 
 class MyLog
 {
@@ -11,8 +15,8 @@ class MyLog
 
     private function __construct(string $filename)
     {
-        $this->log = new Monolog\Logger('name');
-        $this->log->pushHandler(new Monolog\Handler\StreamHandler($filename, \Monolog\Level::Info));
+        $this->log = new Logger('name');
+        $this->log->pushHandler(new StreamHandler($filename, Level::Info));
     }
     public static function load(string $filename): MyLog
     {

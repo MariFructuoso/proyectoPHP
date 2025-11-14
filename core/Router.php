@@ -1,5 +1,7 @@
 <?php
 
+namespace dwes\core;
+
 class Router
 {
     private $routes;

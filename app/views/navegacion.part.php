@@ -1,5 +1,7 @@
 <?php
-require_once __DIR__ . '/../../src/utils/utils.class.php';
+
+use dwes\app\utils\Utils;
+
 ?>
 <!-- Navigation Bar -->
 <nav class="navbar navbar-fixed-top navbar-default">
