@@ -4,6 +4,7 @@ namespace dwes\core;
 
 use dwes\app\exceptions\AppException;
 use dwes\core\database\Connection;
+use dwes\core\database\QueryBuilder;
 use PDO;
 
 class App
@@ -36,5 +37,12 @@ class App
             static::$container['connection'] = Connection::make();
         }
         return static::$container['connection'];
+    }
+
+    public static function getRepository(string $className): QueryBuilder
+    {
+        if (! array_key_exists($className, static::$container))
+            static::$container[$className] = new $className();
+        return static::$container[$className];
     }
 }

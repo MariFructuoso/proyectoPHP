@@ -5,13 +5,15 @@ namespace dwes\core;
 use dwes\core\App;
 use dwes\core\Request;
 use dwes\core\Router;
+use dwes\app\utils\MyLog;
 
 require __DIR__ . '/../vendor/autoload.php';
 
 $config = require_once __DIR__ . '/../app/config.php';
+App::bind('config', $config); // Guardamos la configuración en el contenedor de servicios
 
-// Guardamos la configuración en el contenedor de servicios
-App::bind('config', $config);
-
-$router = Router::load('app/routes.php');
+$router = Router::load(__DIR__ . '/../app/' . $config['routes']['filename']);
 App::bind('router', $router);
+
+$logger = MyLog::load(__DIR__ . '/../logs/' . $config['logs']['filename'], $config['logs']['level']);
+App::bind('logger', $logger); // Añadimos $logger al contenedor de servicios
