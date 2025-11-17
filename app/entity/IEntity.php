@@ -1,7 +1,7 @@
 <?php
-
 namespace dwes\app\entity;
 
-interface IEntity {
+Interface IEntity {
     public function toArray(): array;
 }
+?>

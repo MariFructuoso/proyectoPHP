@@ -1,123 +1,116 @@
 <?php
-
 namespace dwes\app\entity;
 
 class Asociado implements IEntity
 {
-  const RUTA_LOGOS_ASOCIADOS = 'public/images/asociados/';
+    const RUTA_LOGOS_ASOCIADOS = '/public/images/asociados/';
 
-  /**
-   * @var int 
-   */
-  private $id;
-  /**
-   * @var string
-   */
-  private $nombre;
-  /**
-   * @var string
-   */
-  private $logo;
-  /**
-   * @var string
-   */
-  private $descripcion;
+    /**
+     * @var int
+     */
+    private $id = 0;
 
-  /**
-   * @param string $nombre
-   * @param string $logo
-   * @param string $descripcion
-   */
-  public function __construct(string $nombre = "", string $logo = "", string $descripcion = "")
-  {
-    $this->id = null;
-    $this->nombre = $nombre;
-    $this->logo = $logo;
-    $this->descripcion = $descripcion;
-  }
+    /**
+     * @var string
+     */
+    private $nombre;
 
-  /**
-   * @return int
-   */
-  public function getID(): ?int
-  {
-    return $this->id;
-  }
-  /**
-   * @return string
-   */
-  public function getNombre(): ?string
-  {
-    return $this->nombre;
-  }
-  /**
-   * @return string
-   */
-  public function getLogo(): ?string
-  {
-    return $this->logo;
-  }
-  /**
-   * @return string
-   */
-  public function getDescripcion(): ?string
-  {
-    return $this->descripcion;
-  }
+    /**
+     * @var string
+     */
+    private $logo;
 
-  /**
-   * @param string $nombre
-   * @return Asociado
-   */
-  public function setNombre(string $nombre): Asociado
-  {
-      $this->nombre = $nombre;
-      return $this;
-  }
-  /**
-   * @param string $logo
-   * @return Asociado
-   */
-  public function setLogo(string $logo): Asociado
-  {
-      $this->logo = $logo;
-      return $this;
-  }
+    /**
+     * @var string
+     */
+    private $descripcion;
 
-  /**
-   * @param string $descripcion
-   * @return Asociado
-   */
-  public function setDescripcion(string $descripcion): Asociado
-  {
-      $this->descripcion = $descripcion;
-      return $this;
-  }
-
-  public function getUrlLogo(): string
-  {
-    // Asegurarnos de que no hay barras duplicadas
-    $logo = $this->getLogo();
-    if (empty($logo)) {
-      return '';
+    public function __construct(string $nombre = "", $logo = "", $descripcion = "")
+    {
+        $this->nombre = $nombre;
+        $this->logo = $logo;
+        $this->descripcion = $descripcion;
     }
-    return trim(self::RUTA_LOGOS_ASOCIADOS . $logo, '/');
-  }
 
-  public function __toString(): string
-  {
-    return $this->descripcion;
-  }
+    /**
+     * @return int
+     */
+    public function getId(): ?int //? significa que puede devolver null
+    {
+        return $this->id;
+    }
 
-  // ===================== IMPLEMENTACIÓN DE IEntity =====================
-  public function toArray(): array
-  {
-      return [
-          'nombre' => $this->getNombre(),
-          'logo' => $this->getLogo(),
-          'descripcion' => $this->getDescripcion()
-      ];
-  }
+    /**
+     * @return string
+     */
+    public function getNombre(): ?string //? significa que puede devolver null
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * @param string $nombre
+     * @return Asociado
+     */
+    public function setNombre(string $nombre): Asociado
+    {
+        $this->nombre = $nombre;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLogo(): ?string
+    {
+        return $this->logo;
+    }
+
+    /**
+     * @param string $logo
+     * @return Asociado
+     */
+    public function setLogo(string $logo): Asociado
+    {
+        $this->logo = $logo;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescripcion(): ?string
+    {
+        return $this->descripcion;
+    }
+
+    /**
+     * @param string $descripcion
+     * @return Asociado
+     */
+    public function setDescripcion(string $descripcion): Asociado
+    {
+        $this->descripcion = $descripcion;
+        return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->descripcion;
+    }
+
+    public function getUrl(): string
+    {
+        return self::RUTA_LOGOS_ASOCIADOS . $this->getLogo();
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->getId(),
+            'nombre' => $this->getNombre(),
+            'logo' => $this->getLogo(),
+            'descripcion' => $this->getDescripcion()
+        ];
+    }
 }
-?>
-

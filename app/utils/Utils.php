@@ -1,24 +1,28 @@
 <?php
-
 namespace dwes\app\utils;
 
 class Utils
 {
-    public static function esOpcionMenuActiva($opcion):bool
+    public static function esOpcionMenuActiva($opcion): bool
     {
-        $uri = $_SERVER['REQUEST_URI'];
-        // Eliminar query string si existe
-        if (($pos = strpos($uri, '?')) !== false) {
-            $uri = substr($uri, 0, $pos);
+
+        $actual = explode('/', $_SERVER['REQUEST_URI']);
+        $actual = '/' . $actual[count($actual) - 1];
+        if ($actual === $opcion) {
+            return true;
+        } else {
+            return false;
         }
-        // Eliminar base URL si existe
-        $baseUrl = '/dwes.local';
-        if (strpos($uri, $baseUrl) === 0) {
-            $uri = substr($uri, strlen($baseUrl));
+    }
+
+    public static function extraeElementosAleatorios($lista, $cantidad): ?array
+    {
+        if ($cantidad < 1 || sizeof($lista) == 0) return null;
+        else {
+            shuffle($lista);
+            // Obtenemos un array de fragmentos de tamaño $cantidad del array pasado
+            $listaNueva = array_chunk($lista, $cantidad);
+            return $listaNueva[0]; // Devolvemos el primer fragmento del array
         }
-        // Eliminar barras al inicio y final
-        $uri = trim($uri, '/');
-        
-        return $uri === $opcion;
     }
 }

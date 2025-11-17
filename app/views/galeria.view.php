@@ -1,7 +1,3 @@
-<?php
-require_once __DIR__ . '/inicio.part.php';
-require_once __DIR__ . '/navegacion.part.php';
-?>
 
 <div class="hero hero-inner">
     <div class="container">
@@ -15,7 +11,6 @@ require_once __DIR__ . '/navegacion.part.php';
         </div>
     </div>
 </div>
-
 <!-- Principal Content Start -->
 <div id="galeria">
     <div class="container">
@@ -23,7 +18,7 @@ require_once __DIR__ . '/navegacion.part.php';
             <h2>Subir imágenes:</h2>
             <hr>
             <!-- Sección que muestra la confirmación del formulario o bien sus errores -->
-            <?php if ($_SERVER['REQUEST_METHOD'] === 'POST') : ?>
+            <?php if ($postRealizado) : ?>
                 <div class="alert alert-<?= empty($errores) ? 'info' : 'danger'; ?> alert-dismissible" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">x</span>
@@ -39,10 +34,10 @@ require_once __DIR__ . '/navegacion.part.php';
                     <?php endif; ?>
                 </div>
             <?php endif; ?>
-
-            <!-- Formulario para subir imagen -->
+            <!-- Formulario que permite subir una imagen con su descripción -->
+            <!-- Hay que indicar OBLIGATORIAMENTE enctype="multipart/form-data" para enviar ficheros al servidor -->
             <form class="form-horizontal" action="/galeria/nueva" method="post"
-                  enctype="multipart/form-data">
+                enctype="multipart/form-data">
                 <div class="form-group">
                     <div class="col-xs-12">
                         <label class="label-control">Imagen</label>
@@ -51,22 +46,34 @@ require_once __DIR__ . '/navegacion.part.php';
                 </div>
                 <div class="form-group">
                     <div class="col-xs-12">
-                        <label class="label-control">Título</label>
-                        <input type="text" class="form-control" id="titulo" name="titulo" value="<?= $titulo ?>">
+                        <label class="label-control">Categoria</label>
+                        <select class="form-control" name="categoria">
+                            <?php foreach ($categorias as $categoria) : ?>
+                                <option value="<?= $categoria->getId() ?>"><?= $categoria->getNombre() ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <label class="label-control">Titulo</label>
+                        <input type="text" class="form-control" id="titulo" name="titulo" value="<?= $titulo ?> ">
+                        <br>
                         <label class="label-control">Descripción</label>
                         <textarea class="form-control" name="descripcion"><?= $descripcion ?></textarea>
+                        <br>
                         <button class="pull-right btn btn-lg sr-button">ENVIAR</button>
                     </div>
                 </div>
             </form>
             <hr class="divider">
-
             <div class="imagenes_galeria">
                 <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Imagen</th>
+                            <th scope="col">Categoría</th>
                             <th scope="col">Visualizaciones</th>
                             <th scope="col">Likes</th>
                             <th scope="col">Descargas</th>
@@ -77,11 +84,12 @@ require_once __DIR__ . '/navegacion.part.php';
                             <tr>
                                 <th scope="row"><?= $imagen->getNombre() ?></th>
                                 <td>
-                                    <img src="<?= BASE_URL . '/public/images/subidas/' . $imagen->getNombre() ?>"
-                                         alt="<?= $imagen->getDescripcion() ?>"
-                                         title="<?= $imagen->getDescripcion() ?>"
-                                         width="100px">
+                                    <img src="<?= $imagen->getUrlSubidas() ?>"
+                                        alt="<?= $imagen->getDescripcion() ?>"
+                                        title="<?= $imagen->getDescripcion() ?>"
+                                        width="100px">
                                 </td>
+                                <td><?= $imagenesRepository->getCategoria($imagen)->getNombre() ?></td>
                                 <td><?= $imagen->getNumVisualizaciones() ?></td>
                                 <td><?= $imagen->getNumLikes() ?></td>
                                 <td><?= $imagen->getNumDownloads() ?></td>
@@ -90,11 +98,6 @@ require_once __DIR__ . '/navegacion.part.php';
                     </tbody>
                 </table>
             </div>
-
         </div>
     </div>
 </div>
-
-<?php
-require_once __DIR__ . '/fin.part.php';
-?>

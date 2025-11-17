@@ -1,6 +1,5 @@
 <?php
-
-namespace dwes\core\database;
+namespace dwes\core\dataBase;
 
 use dwes\app\exceptions\AppException;
 use dwes\core\App;
@@ -9,6 +8,7 @@ use PDOException;
 
 class Connection
 {
+    // V.Ej.11.4.4
     /**
      * @return PDO
      * @throws AppException
@@ -18,13 +18,13 @@ class Connection
         try {
             $config = App::get('config')['database'];
             $connection = new PDO(
-                $config['connection'], // ya incluye dbname y charset
+                $config['connection'] . ';dbname=' . $config['name'],
                 $config['username'],
                 $config['password'],
                 $config['options']
             );
         } catch (PDOException $PDOException) {
-            throw new AppException('No se ha podido crear la conexión a la base de datos: ' . $PDOException->getMessage());
+            throw new AppException('No se ha podido crear la conexión a la base de datos');
         }
         return $connection;
     }

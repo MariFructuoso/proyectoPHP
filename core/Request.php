@@ -1,5 +1,4 @@
 <?php
-
 namespace dwes\core;
 
 class Request
