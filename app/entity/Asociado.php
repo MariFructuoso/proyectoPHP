@@ -3,7 +3,7 @@ namespace dwes\app\entity;
 
 class Asociado implements IEntity
 {
-    const RUTA_LOGOS_ASOCIADOS = '/public/images/asociados/';
+    const RUTA_LOGOS_ASOCIADOS = '/dwes.local/public/images/asociados/';
 
     /**
      * @var int

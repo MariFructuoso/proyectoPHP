@@ -14,7 +14,7 @@
              <div class="post">
                <div class="post-heading">
                  <span>6 JANUARY</span>
-                 <img class="img-responsive" src="../public/images/blog/landscape.jpg" alt="post's picture">
+                 <img class="img-responsive" src="/dwes.local/public/images/blog/landscape.jpg" alt="post's picture">
                </div>
                <div class="post-body">
                  <h3><a href="single_post.php"><strong>doloremque illum</strong></a></h3>
@@ -35,7 +35,7 @@
              <div class="post">
                <div class="post-heading">
                  <span>7 FEBRUARY</span>
-                 <img class="img-responsive" src="../public/images/blog/family.jpg" alt="post's picture">
+                 <img class="img-responsive" src="/dwes.local/public/images/blog/family.jpg" alt="post's picture">
                </div>
                <div class="post-body">
                  <h3><a href="single_post.php"><strong>Lorem ipsum</strong></a></h3>
@@ -56,7 +56,7 @@
              <div class="post">
                <div class="post-heading">
                  <span>8 MARCH</span>
-                 <img class="img-responsive" src="../public/images/blog/elephant.jpg" alt="post's picture">
+                 <img class="img-responsive" src="/dwes.local/public/images/blog/elephant.jpg" alt="post's picture">
                </div>
                <div class="post-body">
                  <h3><a href="single_post.php"><strong>Aliquam soluta</strong></a></h3>
@@ -119,7 +119,7 @@
              <div class="post">
                <div class="post-heading">
                  <span>10 APRIL</span>
-                 <img class="img-responsive" src="../public/images/blog/wedding.jpg" alt="post's picture">
+                 <img class="img-responsive" src="/dwes.local/public/images/blog/wedding.jpg" alt="post's picture">
                </div>
                <div class="post-body">
                  <span>
@@ -132,7 +132,7 @@
              <div class="post">
                <div class="post-heading">
                  <span>12 MAY</span>
-                 <img class="img-responsive" src="../public/images/blog/woman.jpg" alt="post's picture">
+                 <img class="img-responsive" src="/dwes.local/public/images/blog/woman.jpg" alt="post's picture">
                </div>
                <div class="post-body">
                  <span>

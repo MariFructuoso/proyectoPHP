@@ -3,10 +3,10 @@ namespace dwes\app\entity;
 
 class Imagen implements IEntity
 {
-    const RUTA_IMAGENES_PORTFOLIO = '/public/images/index/portfolio/';
-    const RUTA_IMAGENES_GALERIA = '/public/images/index/gallery/';
-    const RUTA_IMAGENES_CLIENTES = '/public/images/clients/';
-    const RUTA_IMAGENES_SUBIDAS = '/public/images/galeria/';
+    const RUTA_IMAGENES_PORTFOLIO = '/dwes.local/public/images/index/portfolio/';
+    const RUTA_IMAGENES_GALERIA = '/dwes.local/public/images/index/gallery/';
+    const RUTA_IMAGENES_CLIENTES = '/dwes.local/public/images/clients/';
+    const RUTA_IMAGENES_SUBIDAS = '/dwes.local/public/images/galeria/';
 
     /**
      * @var int

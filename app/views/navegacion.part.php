@@ -18,27 +18,27 @@
             <ul class="nav navbar-nav">
               <?php if (Utils::esOpcionMenuActiva('/index.php')==true || Utils::esOpcionMenuActiva('/')==true)
                 echo '<li class="active lien">'; else echo '<li class=”lien”>';?>
-              <a href="/">Home</a></li>
+              <a href="/dwes.local/">Home</a></li>
 
               <?php if (Utils::esOpcionMenuActiva('/galeria')==true)
                 echo '<li class="active lien">'; else echo '<li class=”lien”>';?>
-              <a href="/galeria">Galería</a></li>
+              <a href="/dwes.local/galeria">Galería</a></li>
 
               <?php if (Utils::esOpcionMenuActiva('/asociados')==true)
                 echo '<li class="active lien">'; else echo '<li class=”lien”>';?>
-              <a href="/asociados">Asociados</a></li>
+              <a href="/dwes.local/asociados">Asociados</a></li>
 
               <?php if (Utils::esOpcionMenuActiva('/about')==true)
                 echo '<li class="active lien">'; else echo '<li class=”lien”>';?>
-              <a href="/about">About</a></li>
+              <a href="/dwes.local/about">About</a></li>
               
               <?php if (Utils::esOpcionMenuActiva('/blog')==true)
                 echo '<li class="active lien">'; else echo '<li class=”lien”>';?>
-              <a href="/blog">Blog</a></li>
+              <a href="/dwes.local/blog">Blog</a></li>
 
               <?php if (Utils::esOpcionMenuActiva('/contact')==true)
                 echo '<li class="active lien">'; else echo '<li class=”lien”>';?>
-              <a href="/contact"><i class="fa fa-phone-square sr-icons"></i> Contact</a></li>
+              <a href="/dwes.local/contact"><i class="fa fa-phone-square sr-icons"></i> Contact</a></li>
 
             </ul>
          </div>
